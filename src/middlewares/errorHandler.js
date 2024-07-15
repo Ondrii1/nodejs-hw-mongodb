@@ -1,7 +1,8 @@
 import { HttpError } from 'http-errors';
 
+// eslint-disable-next-line no-unused-vars
 export const errorHandler = (err, req, res, next) => {
-  if (err instanceof HttpError) {
+if (err instanceof HttpError) {
     res.status(err.status).json({
       status: err.status,
       message: err.name,
@@ -10,19 +11,8 @@ export const errorHandler = (err, req, res, next) => {
     return;
   }
 
-  res.status(500).json({
-    status: 500,
-    message: 'Something went wrong',
-    data: err.message,
-  });
-  next();
+    res.status(500).json({
+        message: 'Something went wrong',
+        error: err.message,
+    });
 };
-
-// export const notFoundHandler = (err, req, res, next) => {
-//   res.status(404).json({
-//     status: 404,
-//     message: 'Contact not found',
-//     data: { message: 'Contact not found' },
-//   });
-//   next();
-// };
