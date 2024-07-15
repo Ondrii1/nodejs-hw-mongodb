@@ -7,7 +7,7 @@ const ContactSchema = new Schema(
       required: true,
     },
     phoneNumber: {
-      type: Number,
+      type: String,
       required: true,
     },
     email: {
@@ -24,6 +24,14 @@ const ContactSchema = new Schema(
       default: 'personal',
       enum: ['work', 'home', 'personal'],
     },
+    createdAt: {
+      type: Date,
+      default: Date.now
+  },
+  updatedAt: {
+      type: Date,
+      default: Date.now
+  },
   },
   {
     timestamps: true,
